@@ -50,6 +50,33 @@ def is_x_loop(x, x_list):
     return -1, -1
 
 
+# x, n输入
+def x_n_input():
+    while True:
+        n = sys.argv[1]
+        try:
+            if int(n) <= 0 or int(n) > sys.maxsize:
+                print("Wrong input!")
+            else:
+                n = int(n)
+                break
+        except:
+            print("Wrong input")
+
+    while True:
+        x = sys.argv[2]
+        try:
+            if int(x) <= 0 or int(n) > math.pow(10, n):
+                print("Wrong input!")
+            else:
+                x = int(x)
+                break
+        except:
+            print("Wrong input")
+
+    return x, n
+
+
 # 返回F的结果
 def F_output(x, n):
     x = fill_to_n_digits(x, n)
@@ -72,3 +99,9 @@ def move_and_loop(n) -> list:
         F_list.append((temp_F1, temp_F2))
     return F_list
 
+
+if __name__ == '__main__':
+    x, n = x_n_input()
+    move_and_loop(n)
+    F1, F2 = F_output(x, n)
+    print("F(" + str(x) + ") = (" + str(F1) + ", " + str(F2) + ")")
